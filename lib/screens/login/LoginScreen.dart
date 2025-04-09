@@ -214,7 +214,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-               SizedBox(height: 50.h,),
+               SizedBox(height: 129.h,),
                 // Login Button
                 ElevatedButton(
                   onPressed: _login,
@@ -234,7 +234,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 11.h),
                 // Register Option
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

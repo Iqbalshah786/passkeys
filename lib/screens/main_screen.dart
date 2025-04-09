@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobile/widgets/transfer_payment_top_up_widget.dart';
 import '../widgets/CardCarousel.dart';
 import '../widgets/credit_debit_toggle.dart';
+import '../widgets/quick_transfers_section.dart';
 import 'app_bar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -14,40 +16,72 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   bool _isCredit = true;
+  bool _isTransfer = true;
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light,
       ),
       child: Scaffold(
+
+        // backgroundColor: Colors.black,
         backgroundColor: const Color(0xFFF4F6FF),
-        body: Center(
-          child: Column(
-            children: [
-              SizedBox(height: 35.h),
-              AppBarScreen(),
-              // Additional widgets (Tabs, Card Info, etc.) can be added here.
-              CreditDebitToggle(
-                initialIsCredit: _isCredit,
-                onToggle: (isCredit) {
+        body: Column(
+          children: [
+            SizedBox(height: 26.h),
+            AppBarScreen(),
+
+            // toggle credit and debit
+            CreditDebitToggle(
+              initialIsCredit: _isCredit,
+              onToggle: (isCredit) {
+                setState(() {
+                  _isCredit = isCredit;
+                });
+                // // Handle the toggle action, e.g., load different data
+                // print('Switched to ${isCredit ? "Credit" : "Debit"} mode');
+              },
+            ),
+            SizedBox(height: 12.h),
+
+            //cards
+            CardCarousel(),
+            SizedBox(height: 16.h),
+
+            // payment type tabs
+            Container(
+              width: 370.w,
+              height: 50.h,
+              padding: EdgeInsets.all(5.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6.r),
+                  color: Colors.white
+              ),
+              child: TransferPaymentTopUpWidget(
+                initialIsTransfer: _isTransfer,
+                onToggle: (bool _isTransfer) {
                   setState(() {
-                    _isCredit = isCredit;
+                    _isTransfer = _isTransfer;
                   });
-                  // Handle the toggle action, e.g., load different data
-                  print('Switched to ${isCredit ? "Credit" : "Debit"} mode');
                 },
               ),
-              const SizedBox(height: 24),
-              Text(
-                'Current mode: ${_isCredit ? "Credit" : "Debit"}',
-                style: const TextStyle(fontSize: 18),
+            ),
+
+            Container(
+              width: 370.w,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 13.h),
+                  QuickTransfersSection(),
+                ],
               ),
-              CardCarousel(),
-    ],
-          ),
+            ),
+            ],
         ),
       ),
     );
