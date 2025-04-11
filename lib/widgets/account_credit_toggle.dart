@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CreditDebitToggle extends StatefulWidget {
-  final Function(bool isCredit) onToggle;
-  final bool initialIsCredit;
+class AccountcreditToggle extends StatefulWidget {
+  final Function(bool _isAccount) onToggle;
+  final bool initialIsAccount;
 
-  const CreditDebitToggle({
+  const AccountcreditToggle({
     Key? key,
     required this.onToggle,
-    this.initialIsCredit = true,
+    this.initialIsAccount = true,
   }) : super(key: key);
 
   @override
-  State<CreditDebitToggle> createState() => _CreditDebitToggleState();
+  State<AccountcreditToggle> createState() => _AccountcreditToggleState();
 }
 
-class _CreditDebitToggleState extends State<CreditDebitToggle> {
-  late bool _isCredit;
+class _AccountcreditToggleState extends State<AccountcreditToggle> {
+  late bool _isAccount;
 
   @override
   void initState() {
     super.initState();
-    _isCredit = widget.initialIsCredit;
+    _isAccount = widget.initialIsAccount;
   }
 
   @override
@@ -33,28 +33,29 @@ class _CreditDebitToggleState extends State<CreditDebitToggle> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6.h),
+
       ),
       child: Row(
         children: [
           _buildToggleOption(
-            label: 'Credit',
-            isSelected: _isCredit,
+            label: 'Account',
+            isSelected: _isAccount,
             onTap: () {
-              if (!_isCredit) {
+              if (!_isAccount) {
                 setState(() {
-                  _isCredit = true;
+                  _isAccount = true;
                 });
                 widget.onToggle(true);
               }
             },
           ),
           _buildToggleOption(
-            label: 'Debit',
-            isSelected: !_isCredit,
+            label: 'Credit',
+            isSelected: !_isAccount,
             onTap: () {
-              if (_isCredit) {
+              if (_isAccount) {
                 setState(() {
-                  _isCredit = false;
+                  _isAccount = false;
                 });
                 widget.onToggle(false);
               }
@@ -84,7 +85,7 @@ class _CreditDebitToggleState extends State<CreditDebitToggle> {
               style: TextStyle(
                 color: isSelected ? Colors.white : Color(0xFF121212),
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                fontSize: 14.sp,
+                fontSize: 12.sp,
               ),
             ),
           ),

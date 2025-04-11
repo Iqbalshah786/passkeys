@@ -21,6 +21,10 @@ class _CardCarouselState extends State<CardCarousel> {
 
   @override
   Widget build(BuildContext context) {
+
+    double screenHeight = MediaQuery.of(context).size.height;
+
+
     // List of bank card widgets
     final List<Widget> cardItems = [
       _buildBankCard(
@@ -28,20 +32,24 @@ class _CardCarouselState extends State<CardCarousel> {
         accountType: 'Current Account',
         name: 'Naveed Tejani',
         accountNumber: 'PK012MEZN1425545523635662',
+        screenHeight: screenHeight,
       ),
       _buildBankCard(
         balance: 'PKR 1,000,000.00',
         accountType: 'Savings Account',
         name: 'Naveed Tejani',
         accountNumber: 'PK012MEZN1425545523635662',
+        screenHeight: screenHeight,
       ),
       _buildBankCard(
         balance: 'PKR 50,000.00',
         accountType: 'Another Account',
         name: 'Naveed Tejani',
         accountNumber: 'PK012MEZN1425545523635662',
+        screenHeight: screenHeight,
       ),
     ];
+
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -76,7 +84,7 @@ class _CardCarouselState extends State<CardCarousel> {
                 children: [
                   cardItems[index],
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(10.r),
+                    borderRadius: BorderRadius.circular(8.r),
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                       child: Container(
@@ -111,10 +119,33 @@ class _CardCarouselState extends State<CardCarousel> {
     required String accountType,
     required String name,
     required String accountNumber,
+    required double screenHeight,
   }) {
     return Container(
       padding: EdgeInsets.all(10.w),
       decoration: BoxDecoration(
+
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            offset: Offset(3, 1),
+            blurRadius: 8,
+            spreadRadius: 0,
+          ),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            offset: Offset(-3, 1),
+            blurRadius: 5,
+            spreadRadius: 0,
+          ),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            offset: Offset(0, 1),
+            blurRadius: 1,
+            spreadRadius: 0,
+          ),
+        ],
+
         border: GradientBoxBorder(
           gradient: const LinearGradient(
             colors: [
@@ -122,11 +153,11 @@ class _CardCarouselState extends State<CardCarousel> {
               Color(0xffB9C5FF),
             ],
           ),
-          width: 2.w,
+          width: 1.w,
         ),
         gradient: const LinearGradient(
           colors: [
-            Color(0xff4361EE),
+            Color(0xff203284),
             Color(0xff4361EE),
           ],
           begin: Alignment.centerLeft,
@@ -163,7 +194,7 @@ class _CardCarouselState extends State<CardCarousel> {
               ],
             ),
           ),
-          SizedBox(height: 15.h),
+          SizedBox(height: 5.h),
           // Balance info
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,7 +217,9 @@ class _CardCarouselState extends State<CardCarousel> {
               ),
             ],
           ),
-          SizedBox(height: 33.h),
+          SizedBox(
+            height: screenHeight < 700 ? 10.0.h : 28.h,
+          ),
           // Name & account info
           Flexible(
             child: Column(
@@ -199,7 +232,7 @@ class _CardCarouselState extends State<CardCarousel> {
                     style: TextStyle(
                       color: const Color(0xFFECEFFF),
                       fontWeight: FontWeight.w600,
-                      fontSize: 15.sp,
+                      fontSize: 13.sp,
                     ),
                   ),
                 ),

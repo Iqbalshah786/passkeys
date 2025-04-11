@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/widgets/investment_card_widget.dart';
@@ -7,6 +9,8 @@ class QuickTransfersSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Column(
 
       children: [
@@ -17,7 +21,7 @@ class QuickTransfersSection extends StatelessWidget {
             Text(
               'Quick transfers',
               style: TextStyle(
-                fontSize: 14.sp,
+                fontSize: 13.sp,
                 fontWeight: FontWeight.w500,
                 color: Color(0xff121212),
               ),
@@ -56,44 +60,50 @@ class QuickTransfersSection extends StatelessWidget {
           padding: EdgeInsets.zero,
           shrinkWrap: true,
           crossAxisCount: 3,
-          childAspectRatio: 1.3,
+          childAspectRatio: 1.2,
           crossAxisSpacing: 9.w,
           mainAxisSpacing:10.h,
           children: [
             TransferTile(
               isAction: true,
-              icon: Icons.send,
+              image: Image.asset('assets/icons/sendIcon.png',width: 28.w,height: 28.h,),
               title: 'Send Money',
-              iconColor: Colors.blue,
+              // iconColor: Color(0xff4361EE),
+                screenHeight:screenHeight,
             ),
             TransferTile(
               initials: 'SS',
               title: 'Samia Sajjad',
               accountNumber: '12345678901234',
+              screenHeight:screenHeight,
             ),
             TransferTile(
               initials: 'AI',
               title: 'Apple Inc',
               accountNumber: '12345678901234',
+              screenHeight:screenHeight,
             ),
             TransferTile(
               initials: 'AI',
               title: 'Apple Inc',
               accountNumber: '12345678901234',
+              screenHeight:screenHeight,
             ),
             TransferTile(
               initials: 'AI',
               title: 'Apple Inc',
               accountNumber: '12345678901234',
+              screenHeight:screenHeight,
             ),
             TransferTile(
               initials: 'AI',
               title: 'Apple Inc',
               accountNumber: '12345678901234',
+              screenHeight:screenHeight,
             ),
           ],
         ),
-        // InvestmentCardWidget(),
+
       ],
     );
   }
@@ -104,8 +114,9 @@ class TransferTile extends StatelessWidget {
   final String title;
   final String? accountNumber;
   final bool isAction;
-  final IconData? icon;
-  final Color iconColor;
+  final Image? image;
+  // final Color iconColor;
+  final double screenHeight;
 
   const TransferTile({
     Key? key,
@@ -113,8 +124,9 @@ class TransferTile extends StatelessWidget {
     required this.title,
     this.accountNumber,
     this.isAction = false,
-    this.icon,
-    this.iconColor = Colors.blue,
+    this.image,
+    // this.iconColor = Colors.blue,
+    required this.screenHeight,
   }) : super(key: key);
 
   @override
@@ -132,42 +144,56 @@ class TransferTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (isAction) ...[
-            Icon(
-              icon,
-              color: iconColor,
-              size: 28.sp,
-            ),
+            image ?? Icon(Icons.send)
+
           ] else ...[
             Stack(
               alignment: Alignment.bottomRight,
               children: [
                 Container(
-                  width: 48.w,
-                  height: 48.h,
+                  width: 50.w,
+                  height: 50.h,
                   decoration: BoxDecoration(
-                    color: const Color(0x14000000),  // example semi‑transparent black
+                    color: const Color(0x14000000),
                     shape: BoxShape.circle,
+
                   ),
                   child: Center(
                     child: Text(
                       initials ?? '',
                       style: TextStyle(
-                        fontSize: 24.sp,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.w200,
                       ),
                     ),
                   ),
                 ),
-                // Positioned(
-                //   bottom: 0,
-                //   right: 0,
-                //   child: Image.asset(
-                //     'assets/icons/bank_al_falah.png',  // remove the leading slash
-                //     width: 17.w,
-                //     height: 17.h,
-                //     fit: BoxFit.contain,
-                //   ),
-                // ),
+                Positioned(
+                  bottom: 0,
+                  right: screenHeight < 700 ? -1 : 0,
+                  child: Container(
+                    padding: EdgeInsets.all(2.w),
+                    width: screenHeight < 700 ? 18.w : 16.w,
+                    height: screenHeight < 700 ? 18.h : 16.h,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Color(0xffE6E6E6),
+                        width: 0.5.w,
+                      ),
+                      shape: BoxShape.circle,
+                    ),
+                      
+                      child: Image.asset('assets/icons/bank_alfalah_logo.png'),
+                      // child: Image.asset(
+                      //   'assets/icons/bank_alfalah_logo.png',
+                      //   width: 10.w,
+                      //   height: 10.h,
+                      // ),
+                      ),
+                    ),
+
+
               ],
             )
 
@@ -178,8 +204,8 @@ class TransferTile extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 10.sp,
-              fontWeight: FontWeight.w400,
-              color: isAction ? iconColor : Color(0xFF121212),
+              fontWeight: FontWeight.w500,
+              color: isAction ? Color(0xff4361EE) : Color(0xFF121212),
             ),
           ),
           if (accountNumber != null) ...[

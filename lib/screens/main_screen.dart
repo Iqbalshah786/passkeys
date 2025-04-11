@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/widgets/transfer_payment_top_up_widget.dart';
 import '../widgets/CardCarousel.dart';
-import '../widgets/credit_debit_toggle.dart';
+import '../widgets/account_credit_toggle.dart';
+import '../widgets/investment_card_widget.dart';
 import '../widgets/quick_transfers_section.dart';
 import 'app_bar.dart';
 
@@ -15,7 +16,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  bool _isCredit = true;
+  bool _isAccount = true;
   bool _isTransfer = true;
 
   @override
@@ -32,15 +33,17 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: const Color(0xFFF4F6FF),
         body: Column(
           children: [
-            SizedBox(height: 26.h),
+            SizedBox(height:screenHeight < 700 ? 25.h : 50.h),
             AppBarScreen(),
 
+            // Text('hi'),
+
             // toggle credit and debit
-            CreditDebitToggle(
-              initialIsCredit: _isCredit,
-              onToggle: (isCredit) {
+            AccountcreditToggle(
+              initialIsAccount: _isAccount,
+              onToggle: (_isAccount) {
                 setState(() {
-                  _isCredit = isCredit;
+                  _isAccount = _isAccount;
                 });
                 // // Handle the toggle action, e.g., load different data
                 // print('Switched to ${isCredit ? "Credit" : "Debit"} mode');
@@ -54,7 +57,7 @@ class _MainScreenState extends State<MainScreen> {
 
             // payment type tabs
             Container(
-              width: 370.w,
+              width: screenHeight < 700 ? 350.w : 360.w,
               height: 50.h,
               padding: EdgeInsets.all(5.w),
               decoration: BoxDecoration(
@@ -71,16 +74,22 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
 
+            //quick transfer
             Container(
-              width: 370.w,
+              width: screenHeight < 700 ? 350.w : 360.w,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 13.h),
+
                   QuickTransfersSection(),
+
                 ],
               ),
             ),
+
+            //investment ai
+            SizedBox(height: 16.h),
+            InvestmentCardWidget(),
             ],
         ),
       ),
@@ -91,23 +100,6 @@ class _MainScreenState extends State<MainScreen> {
 
 
 
-Widget _buildTabs() {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-    child: Center(
-      child: CreditDebitToggle(
-        initialIsCredit: true, // Set your initial state
-        onToggle: (isCredit) {
-          // Handle state change, for example:
-          // setState(() {
-          //   _isCredit = isCredit;
-          //   // Load appropriate data based on selection
-          // });
-        },
-      ),
-    ),
-  );
-}
 
 Widget _buildCardInfo() {
   return Padding(

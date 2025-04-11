@@ -9,8 +9,17 @@ class AppBarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
-      padding: EdgeInsets.all(16.w),
+
+      padding: EdgeInsets.symmetric(horizontal: 18.w,vertical: 0.h),
+      // decoration: BoxDecoration(
+      //   border: Border.all(
+      //     color: Colors.grey, // Set your desired border color
+      //     width: 2.0,         // Set the border width
+      //   ),
+      //   borderRadius: BorderRadius.circular(12.0), // Optional: for rounded corners
+      // ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

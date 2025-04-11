@@ -76,7 +76,7 @@ class _TransferPaymentTopUpWidgetState extends State<TransferPaymentTopUpWidget>
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 14.sp,
+              fontSize: 12.sp,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
               color: isSelected ? Colors.white : Color(0xff121212),
             ),
