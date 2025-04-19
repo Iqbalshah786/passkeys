@@ -1,9 +1,11 @@
+// lib/widgets/bottom_navigation.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomNavigation extends StatefulWidget {
   final int currentIndex;
-  final Function(int) onTap;
+  final ValueChanged<int> onTap;
 
   const BottomNavigation({
     Key? key,
@@ -18,20 +20,10 @@ class BottomNavigation extends StatefulWidget {
 class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 80.h,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, -5),
-          ),
-        ],
-      ),
+    return SafeArea(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildNavItem(0, 'Home', Icons.home_rounded),
           _buildNavItem(1, 'Card', Icons.credit_card_outlined),
@@ -43,9 +35,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   Widget _buildNavItem(int index, String label, IconData iconData) {
-    bool isSelected = widget.currentIndex == index;
-    Color activeColor = const Color(0xFF4267F0); // Blue color for active item
-    Color inactiveColor = const Color(0xFF9E9E9E); // Grey color for inactive items
+    final bool isSelected = widget.currentIndex == index;
+    final Color activeColor = const Color(0xFF4267F0);
+    final Color inactiveColor = const Color(0xFF9E9E9E);
 
     return InkWell(
       onTap: () => widget.onTap(index),

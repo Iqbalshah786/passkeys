@@ -32,6 +32,7 @@ class _CardCarouselState extends State<CardCarousel> {
         accountType: 'Current Account',
         name: 'Naveed Tejani',
         accountNumber: 'PK012MEZN1425545523635662',
+        bgColor:0xff97463d,
         screenHeight: screenHeight,
       ),
       _buildBankCard(
@@ -39,6 +40,7 @@ class _CardCarouselState extends State<CardCarousel> {
         accountType: 'Savings Account',
         name: 'Naveed Tejani',
         accountNumber: 'PK012MEZN1425545523635662',
+        bgColor:0xff3b54d1,
         screenHeight: screenHeight,
       ),
       _buildBankCard(
@@ -46,7 +48,9 @@ class _CardCarouselState extends State<CardCarousel> {
         accountType: 'Another Account',
         name: 'Naveed Tejani',
         accountNumber: 'PK012MEZN1425545523635662',
+        bgColor:0xff5006d7,
         screenHeight: screenHeight,
+
       ),
     ];
 
@@ -120,49 +124,25 @@ class _CardCarouselState extends State<CardCarousel> {
     required String name,
     required String accountNumber,
     required double screenHeight,
+    required int bgColor,
   }) {
     return Container(
       padding: EdgeInsets.all(10.w),
       decoration: BoxDecoration(
+        color: Color(bgColor),
 
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            offset: Offset(3, 1),
-            blurRadius: 8,
-            spreadRadius: 0,
-          ),
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            offset: Offset(-3, 1),
-            blurRadius: 5,
-            spreadRadius: 0,
-          ),
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            offset: Offset(0, 1),
-            blurRadius: 1,
-            spreadRadius: 0,
-          ),
-        ],
 
-        border: GradientBoxBorder(
-          gradient: const LinearGradient(
-            colors: [
-              Color(0xff7088FB),
-              Color(0xffB9C5FF),
-            ],
-          ),
-          width: 1.w,
-        ),
-        gradient: const LinearGradient(
-          colors: [
-            Color(0xff203284),
-            Color(0xff4361EE),
-          ],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
+
+        // border: GradientBoxBorder(
+        //   gradient: const LinearGradient(
+        //     colors: [
+        //       Color(0xff7088FB),
+        //       Color(0xffB9C5FF),
+        //     ],
+        //   ),
+        //   width: 1.w,
+        // ),
+
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Column(

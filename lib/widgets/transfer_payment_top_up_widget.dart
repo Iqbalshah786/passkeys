@@ -67,7 +67,7 @@ class _TransferPaymentTopUpWidgetState extends State<TransferPaymentTopUpWidget>
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 6.w,vertical: 8.h),
+          padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 8.h),
           decoration: BoxDecoration(
             color: isSelected ? const Color(0xFF4169E1) : Colors.transparent,
             borderRadius: BorderRadius.circular(4.r),

@@ -60,7 +60,7 @@ class QuickTransfersSection extends StatelessWidget {
           padding: EdgeInsets.zero,
           shrinkWrap: true,
           crossAxisCount: 3,
-          childAspectRatio: 1.2,
+          childAspectRatio: 1.1,
           crossAxisSpacing: 9.w,
           mainAxisSpacing:10.h,
           children: [

@@ -36,8 +36,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             child: Image.asset(
               widget.profileImage,
               fit: BoxFit.cover,
-              width: 33.w,
-              height: 30.h,
+              width: 32.w,
+              height: 32.h,
             ),
           ),
         ),

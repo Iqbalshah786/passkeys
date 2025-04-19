@@ -5,6 +5,7 @@ import 'package:mobile/logger/logger.dart';
 import 'package:mobile/screens/AuthChoiceScreen.dart';
 import 'package:mobile/screens/RegisterScreen.dart';
 import 'package:mobile/screens/login/LoginScreen.dart';
+import 'package:mobile/screens/home_tab.dart';
 import 'package:mobile/screens/main_screen.dart';
 
 void main() async {
