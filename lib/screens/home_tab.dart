@@ -30,8 +30,6 @@ class _HomeTabState extends State<HomeTab> {
         statusBarBrightness: Brightness.light,
       ),
       child: Scaffold(
-
-        
         // ──────────────────────────────────────────────────────────────────────────
         // Custom BottomNavigationBar
         // ──────────────────────────────────────────────────────────────────────────
@@ -104,7 +102,8 @@ class _HomeTabState extends State<HomeTab> {
         // Main Body
         // ──────────────────────────────────────────────────────────────────────────
 
-        body: SafeArea(
+        body: Padding(
+          padding: EdgeInsets.only(top: 40.h),
           child: Column(
             children: [
               AppBarScreen(),

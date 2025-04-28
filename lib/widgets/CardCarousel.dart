@@ -1,10 +1,8 @@
-import 'dart:math' as math;
-import 'dart:ui'; // Import for ImageFilter
+import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart' as cs;
 import 'package:carousel_slider/carousel_controller.dart' as csController;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CardCarousel extends StatefulWidget {
@@ -90,7 +88,7 @@ class _CardCarouselState extends State<CardCarousel> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8.r),
                     child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                      filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
                       child: Container(
                         color: Colors.black.withOpacity(0),
                       ),
@@ -130,19 +128,6 @@ class _CardCarouselState extends State<CardCarousel> {
       padding: EdgeInsets.all(10.w),
       decoration: BoxDecoration(
         color: Color(bgColor),
-
-
-
-        // border: GradientBoxBorder(
-        //   gradient: const LinearGradient(
-        //     colors: [
-        //       Color(0xff7088FB),
-        //       Color(0xffB9C5FF),
-        //     ],
-        //   ),
-        //   width: 1.w,
-        // ),
-
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Column(
