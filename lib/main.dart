@@ -7,6 +7,8 @@ import 'package:mobile/screens/RegisterScreen.dart';
 import 'package:mobile/screens/login/LoginScreen.dart';
 import 'package:mobile/screens/home_tab.dart';
 import 'package:mobile/screens/main_screen.dart';
+import 'package:mobile/screens/transactionsuccessfulscreen/transaction_successful_screen.dart';
+import 'package:mobile/screens/transfer_payment_screen/transfer_payment_screen.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +45,8 @@ class MyApp extends StatelessWidget {
             '/register': (context) => RegisterScreen(),
             '/login': (context) => LoginScreen(),
             '/main_screen': (context) => MainScreen(),
+            '/transfer':(context) =>TransferPaymentScreen(),
+            '/success':  (ctx) => TransactionSuccessfulScreen(),
           },
         );
       },
