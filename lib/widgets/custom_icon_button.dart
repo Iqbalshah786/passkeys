@@ -1,11 +1,11 @@
 // lib/widgets/custom_icon_button.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomIconButton extends StatelessWidget {
   final String assetPath;
-  final double width;
-  final double height;
+  final double width, height;
   final VoidCallback onPressed;
 
   const CustomIconButton({
@@ -14,17 +14,17 @@ class CustomIconButton extends StatelessWidget {
     required this.width,
     required this.height,
     required this.onPressed,
-  }) : super(key: key);
+  }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Image.asset(
-        assetPath,
-        width: width.w,
-        height: height.h,
+    return GestureDetector(
+      onTap: onPressed,
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: Image.asset(assetPath, width: width, height: height),
       ),
-      onPressed: onPressed,
     );
   }
 }
