@@ -9,27 +9,30 @@ class ActionButtonsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      // mainAxisSize: MainAxisSize.min,
       children: [
         CustomIconButton(
           assetPath: 'assets/icons/search.png',
-          width: 35.w,
-          height: 35.h,
+          width: 30.w,
+          height: 30.h,
           onPressed: () {
             print('search icon');
           },
         ),
+        SizedBox(width: 12.w,),
         CustomIconButton(
           assetPath: 'assets/icons/bell.png',
-          width: 17.w,
-          height: 17.h,
+          width: 15.w,
+          height: 15.h,
           onPressed: () {
             print('notification icon');
           },
         ),
+        SizedBox(width: 12.w,),
         CustomIconButton(
           assetPath: 'assets/icons/qr.png',
-          width: 32.w,
-          height: 32.h,
+          width: 30.w,
+          height: 30.h,
           onPressed: () {
             print('qr code');
           },
