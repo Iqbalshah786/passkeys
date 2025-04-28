@@ -12,7 +12,7 @@ class AppBarScreen extends StatelessWidget {
 
     return Container(
 
-      padding: EdgeInsets.symmetric(horizontal: 18.w,vertical: 0.h),
+      padding: EdgeInsets.only(left: 18.w,right: 18.w, top: 10.h,bottom: 11.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
