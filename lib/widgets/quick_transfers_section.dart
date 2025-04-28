@@ -126,12 +126,10 @@ class _QuickTransfersSectionState extends State<QuickTransfersSection> {
               // 3) Long-press end: navigate without resetting preview first
               onLongPressEnd: (_) {
                 if (_previewIndex == i) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const TransferPaymentScreen(),
-                    ),
+                  Navigator.of(context).pushNamed(
+                    '/transfer',
                   );
+
                   // only clear preview after navigation call
                   setState(() {
                     _previewIndex = null;
